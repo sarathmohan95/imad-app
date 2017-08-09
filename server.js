@@ -5,11 +5,53 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var pageone={
+    title:'PageOne | Sarath',
+    heading:'Page One',
+    content:`this is my new content. this is my new content. this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.this is my new content.
+        `
+    
+};
+function newfun(data){
+    var title=data.title;
+    var heading=data.heading;
+    var content=data.content;
+var htmlpage=`
+<html>
+<head>
+    <title>
+       ${title}
+    </title>
+    
+    <link href="/ui/style.css" rel="stylesheet" /></head>
+    <body>
+        <div class="container">
+        <div>
+            <a href="/">Home</a>
+        </div>
+        <hr/>
+        <div>
+            <h3>${heading}</h3>
+        </div>
+        <div>
+            ${content}
+        </div>
+        </div>
+    </body>
+
+</html>
+
+    
+`;
+return htmlpage;
+
+}
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 app.get('/pageone', function (req,res){
-    res.sendFile(path.join(__dirname, 'ui','pageone.html'));
+    res.send(newfun(pageone));
 });
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));

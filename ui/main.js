@@ -3,6 +3,9 @@ var element = document.getElementById('my-id');
 element.innerHTML ='new text';
 
 var img = document.getElementById('dino');
+function moveRight(){
+    marginLeft=marginLeft*10;
+}
 img.onclick= function() {
-img.style.marginRight='100px';
+var inter = setInterval(moveRight, 100);
 };
